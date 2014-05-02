@@ -69,7 +69,7 @@ class StreamCommand extends Command
 
             $this->putPhoto($output, $client, file_get_contents(self::TEMP_PATH_TO_SCREENSHOT));
 
-            $this->getApplication()->filesystem->remove(self::TEMP_PATH_TO_SCREENSHOT);
+            $this->getApplication()->getFilesystem()->remove(self::TEMP_PATH_TO_SCREENSHOT);
         }
     }
 
