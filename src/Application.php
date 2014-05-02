@@ -21,6 +21,11 @@ class Application extends BaseApplication
     /**
      * @var Filesystem
      */
+    private $filesystem;
+
+    /**
+     * @param Filesystem $filesystem
+     */
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct(self::NAME, self::VERSION);
