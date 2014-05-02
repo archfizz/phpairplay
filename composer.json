@@ -1,0 +1,23 @@
+{
+    "name": "archfizz/phpairplay",
+    "license": "MIT",
+    "authors": [{
+        "name": "Adam Elsodaney"
+    }],
+
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/console": "~2",
+        "symfony/process": "~2",
+        "symfony/filesystem": "~2",
+        "guzzlehttp/guzzle": "~4"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "ArchFizz\\PhpAirPlay\\": "src/"
+        }
+    },
+
+    "bin": ["bin/airplay"]
+}
