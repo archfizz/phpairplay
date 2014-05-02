@@ -10,12 +10,12 @@ Usage
 Just run this command, but replace the IP address `192.168.0.69` with
 whatever the IP address of your Apple TV is.
 
-    $ php airplay stream:to 192.168.0.69
+    $ php bin/airplay stream:to 192.168.0.69
 
 
 Most of the time, you can simply run.
 
-    $ php airplay stream:to AppleTV.local
+    $ php bin/airplay stream:to AppleTV.local
 
 
 Installation
@@ -44,6 +44,9 @@ Add to your composer.json
     {
         "require": {
             "archfizz/phpairplay": "dev-master"
+        },
+        "config": {
+            "bin-dir": "bin"
         }
     }
 

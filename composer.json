@@ -19,5 +19,5 @@
         }
     },
 
-    "bin": ["airplay"]
+    "bin": ["bin/airplay"]
 }
