@@ -32,4 +32,12 @@ class Application extends BaseApplication
 
         $this->filesystem = $filesystem;
     }
+
+    /**
+     * @return Filesystem
+     */
+    public function getFilesystem()
+    {
+        return $this->filesystem;
+    }
 }
