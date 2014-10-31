@@ -12,7 +12,7 @@ Usage
 Just run this command, but replace the IP address `192.168.0.69` with
 whatever the IP address of your Apple TV is.
 
-    $ php bin/airplay mirror:to 192.168.0.69
+    $ php bin/airplay mirror 192.168.0.69
 
 
 Most of the time, you can simply run.
