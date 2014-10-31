@@ -3,5 +3,6 @@
 require __DIR__.'/../vendor/autoload.php';
 
 $app = new ArchFizz\PhpAirPlay\Application(new Symfony\Component\Filesystem\Filesystem());
-$app->add(new ArchFizz\PhpAirPlay\StreamCommand());
+$app->add(new ArchFizz\PhpAirPlay\MirrorCommand());
+$app->add(new ArchFizz\PhpAirPlay\PlayVideoCommand());
 $app->run();

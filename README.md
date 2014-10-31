@@ -3,6 +3,8 @@ PhpAirPlay
 
 Mirror your desktop to an Apple TV device using this PHP command line utility.
 
+This utility will repeatedly take a screenshot of your desktop and put it on your Apple TV.
+
 
 Usage
 -----
@@ -10,12 +12,12 @@ Usage
 Just run this command, but replace the IP address `192.168.0.69` with
 whatever the IP address of your Apple TV is.
 
-    $ php bin/airplay stream:to 192.168.0.69
+    $ php bin/airplay mirror:to 192.168.0.69
 
 
 Most of the time, you can simply run.
 
-    $ php bin/airplay stream:to AppleTV.local
+    $ php bin/airplay mirror AppleTV.local
 
 
 Installation
@@ -26,7 +28,7 @@ This utility requires the following to be installed on your machine.
   * PHP 5.4
   * cURL
   * Git
-  * Shutter
+  * Imagemagick
 
 Then run these commands from the terminal to install.
 
@@ -52,7 +54,7 @@ Add to your composer.json
 
 Then run from the root of your project
 
-    $ bin/airplay stream:to AppleTV.local
+    $ bin/airplay mirror AppleTV.local
 
 
 Caution
