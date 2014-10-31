@@ -1,6 +1,9 @@
 PhpAirPlay
 ==========
 
+[![Build Status](https://travis-ci.org/archfizz/phpairplay.svg?branch=master)](https://travis-ci.org/archfizz/phpairplay)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/archfizz/phpairplay/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/archfizz/phpairplay/?branch=master)
+
+
 Mirror your desktop to an Apple TV device using this PHP command line utility.
 
 This utility will repeatedly take a screenshot of your desktop and put it on your Apple TV.
