@@ -9,4 +9,4 @@ php:
 before_script:
   - composer install --dev
 
-script: bin/phpspec -fpretty
+script: bin/phpspec run -fpretty
