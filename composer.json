@@ -7,17 +7,25 @@
 
     "require": {
         "php": ">=5.4.0",
-        "symfony/console": "~2",
-        "symfony/process": "~2",
-        "symfony/filesystem": "~2",
-        "guzzlehttp/guzzle": "~4"
+        "symfony/console": "~2.0",
+        "symfony/process": "~2.0",
+        "symfony/filesystem": "~2.0",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
     },
 
     "autoload": {
-        "psr-4": {
-            "ArchFizz\\PhpAirPlay\\": "src/"
+        "psr-0": {
+            "": "src/"
         }
     },
 
-    "bin": ["bin/airplay"]
+    "bin": ["bin/airplay"],
+
+    "config": {
+        "bin-dir": "bin/"
+    }
 }
