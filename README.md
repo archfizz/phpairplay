@@ -1,8 +1,8 @@
 PhpAirPlay
 ==========
 
-[![Build Status](https://travis-ci.org/archfizz/phpairplay.svg?branch=master)](https://travis-ci.org/archfizz/phpairplay)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/archfizz/phpairplay/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/archfizz/phpairplay/?branch=master)
-
+[![Build Status](http://img.shields.io/travis/archfizz/phpairplay/master.svg?style=flat)](https://travis-ci.org/archfizz/phpairplay)  [![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/archfizz/phpairplay/master.svg?style=flat)](https://scrutinizer-ci.com/g/archfizz/phpairplay/?branch=master)
+![HHVM Testing](http://img.shields.io/hhvm/archfizz/phpairplay/master.svg?style=flat)
 
 Mirror your desktop to an Apple TV device using this PHP command line utility.
 
