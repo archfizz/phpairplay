@@ -29,7 +29,7 @@ class Mirror
         'imagemagick' => 'import',
         'shutter' => 'shutter',
         'gnome' => 'gnome-screenshot',
-        'mac' => 'screencapture',
+        'osx' => 'screencapture',
     ];
 
     /**
@@ -39,7 +39,7 @@ class Mirror
         'imagemagick' => ['-window', 'root'],
         'shutter' => ['-f', '-e', '-o'],
         'gnome' => ['-f'],
-        'mac' => ['-m', '-x', '-C', '-t', 'jpg'],
+        'osx' => ['-m', '-x', '-C', '-t', 'jpg'],
     ];
 
     /**

@@ -58,7 +58,7 @@ class MirrorSpec extends ObjectBehavior
             'imagemagick',
             'shutter',
             'gnome',
-            'mac',
+            'osx',
         ]);
     }
 }
