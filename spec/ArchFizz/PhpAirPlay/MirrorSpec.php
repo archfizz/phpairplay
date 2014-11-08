@@ -26,7 +26,8 @@ class MirrorSpec extends ObjectBehavior
         $processBuilder->setArguments(['-window', 'root', '/tmp/airplay.jpg'])->shouldBeCalled();
 
         $processBuilder->getProcess()->willReturn($process);
-        $process->run()->shouldBeCalled();
+        $process->start()->shouldBeCalled();$process->isRunning()->shouldBeCalled();
+        $process->isRunning()->shouldBeCalled();
 
         $process->isSuccessful()->willReturn(true);
 
@@ -39,7 +40,8 @@ class MirrorSpec extends ObjectBehavior
         $processBuilder->setArguments(Argument::any())->shouldBeCalled();
 
         $processBuilder->getProcess()->willReturn($process);
-        $process->run()->shouldBeCalled();
+        $process->start()->shouldBeCalled();
+        $process->isRunning()->shouldBeCalled();
 
         $process->isSuccessful()->willReturn(false);
         $process->getErrorOutput()->shouldBeCalled();
