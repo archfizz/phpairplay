@@ -20,7 +20,25 @@ whatever the IP address of your Apple TV is.
 
 Most of the time, you can simply run.
 
-    $ php bin/airplay mirror AppleTV.local
+    $ php bin/airplay mirror Apple-TV.local
+
+
+Features
+--------
+
+### Mirroring ###
+
+Mirroring will repeatedly take a screenshot of your desktop and put it on your Apple TV.
+Depending on your system, a number of utilities can be used to capture the screenshot.
+
+Syntax:
+
+    $ php bin/airplay mirror [host] --utility=[imagemagick|osx|gnome|shutter]
+
+
+### Video Playback ###
+
+Currently work in progress, this is the next feature of PhpAirPlay.
 
 
 Installation
@@ -57,7 +75,7 @@ Add to your composer.json
 
 Then run from the root of your project
 
-    $ bin/airplay mirror AppleTV.local
+    $ bin/airplay mirror Apple-TV.local
 
 
 Caution
@@ -73,3 +91,4 @@ Roadmap
   * Add automated tests (PhpSpec, Behat).
   * Allow any screen capture utility to be used.
   * Allow for advanced configuration.
+  * Add functionality for all AirPlay features.
