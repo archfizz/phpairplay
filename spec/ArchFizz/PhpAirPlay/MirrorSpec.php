@@ -63,4 +63,7 @@ class MirrorSpec extends ObjectBehavior
             'osx',
         ]);
     }
+
+    function _it_extends_or_decorates_SplFileInfo()
+    {}
 }
