@@ -26,10 +26,25 @@ class MirrorSpec extends ObjectBehavior
         $processBuilder->setArguments(['-window', 'root', '/tmp/airplay.jpg'])->shouldBeCalled();
 
         $processBuilder->getProcess()->willReturn($process);
-
         $process->run()->shouldBeCalled();
 
+        $process->isSuccessful()->willReturn(true);
+
         $this->reflect();
+    }
+
+    function it_throws_a_Runtime_Exception_when_a_mirror_image_could_not_be_generated(ProcessBuilder $processBuilder, Process $process)
+    {
+        $processBuilder->setPrefix(Argument::any())->shouldBeCalled();
+        $processBuilder->setArguments(Argument::any())->shouldBeCalled();
+
+        $processBuilder->getProcess()->willReturn($process);
+        $process->run()->shouldBeCalled();
+
+        $process->isSuccessful()->willReturn(false);
+        $process->getErrorOutput()->shouldBeCalled();
+
+        $this->shouldThrow('Symfony\Component\Process\Exception\RuntimeException')->duringReflect();
     }
 
     function it_exposes_the_path_to_the_mirrored_image()

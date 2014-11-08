@@ -2,6 +2,7 @@
 
 namespace ArchFizz\PhpAirPlay;
 
+use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
@@ -69,6 +70,10 @@ class Mirror
         $process = $this->processBuilder->getProcess();
 
         $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new RuntimeException(sprintf("Could not save image to %s.%s", $this->image, \PHP_EOL . $process->getErrorOutput()));
+        }
     }
 
     /**
