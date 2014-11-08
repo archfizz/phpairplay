@@ -3,6 +3,7 @@
 namespace ArchFizz\PhpAirPlay;
 
 use Symfony\Component\Process\Exception\RuntimeException;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
@@ -48,6 +49,11 @@ class Mirror
     private $image;
 
     /**
+     * @var Process
+     */
+    private $process;
+
+    /**
      * @param ProcessBuilder $processBuilder
      * @param string         $utility
      * @param null|string    $image
@@ -72,12 +78,15 @@ class Mirror
      */
     public function reflect()
     {
-        $this->processBuilder->setPrefix($this->utilityCommands[$this->utility]);
+        $process = $this->getProcess();
+        $sub = clone $process;
 
-        $this->processBuilder->setArguments(array_merge($this->utilityArguments[$this->utility], [$this->image]));
-        $process = $this->processBuilder->getProcess();
+        $process->start();
 
-        $process->run();
+        while ($process->isRunning()) {
+            // Having a second process increases the capture and display frequency
+            $sub->run();
+        }
 
         if (!$process->isSuccessful()) {
             throw new RuntimeException(sprintf("Could not save image to %s.%s", $this->image, \PHP_EOL . $process->getErrorOutput()));
@@ -98,5 +107,20 @@ class Mirror
     public function getSupportedUtilities()
     {
         return array_keys($this->utilityCommands);
+    }
+
+    /**
+     * @return Process
+     */
+    private function getProcess()
+    {
+        if (!$this->process) {
+            $this->processBuilder->setPrefix($this->utilityCommands[$this->utility]);
+
+            $this->processBuilder->setArguments(array_merge($this->utilityArguments[$this->utility], [$this->image]));
+            $this->process = $this->processBuilder->getProcess();
+        }
+
+        return $this->process;
     }
 }
