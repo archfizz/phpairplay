@@ -51,4 +51,14 @@ class MirrorSpec extends ObjectBehavior
     {
         $this->getImage()->shouldReturn('/tmp/airplay.jpg');
     }
+
+    function it_exposes_the_supported_utilities()
+    {
+        $this->getSupportedUtilities()->shouldBeLike([
+            'imagemagick',
+            'shutter',
+            'gnome',
+            'mac',
+        ]);
+    }
 }

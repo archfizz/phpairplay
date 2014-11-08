@@ -52,11 +52,19 @@ class Mirror
      * @param string         $utility
      * @param null|string    $image
      */
-    public function __construct(ProcessBuilder $processBuilder, $utility, $image = null)
+    public function __construct(ProcessBuilder $processBuilder, $utility = 'imagemagick', $image = null)
     {
         $this->processBuilder = $processBuilder;
         $this->utility = $utility;
         $this->image = $image ?: self::TEMP_PATH_TO_IMAGE;
+    }
+
+    /**
+     * @param string $utility
+     */
+    public function setUtility($utility)
+    {
+        $this->utility = $utility;
     }
 
     /**
@@ -82,5 +90,13 @@ class Mirror
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSupportedUtilities()
+    {
+        return array_keys($this->utilityCommands);
     }
 }

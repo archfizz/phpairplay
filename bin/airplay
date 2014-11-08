@@ -1,11 +1,22 @@
 #!/usr/bin/env php
 <?php
 
+use ArchFizz\PhpAirPlay\Application;
+use ArchFizz\PhpAirPlay\Mirror;
+use ArchFizz\PhpAirPlay\MirrorCommand;
+use ArchFizz\PhpAirPlay\PlayVideoCommand;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Process\ProcessBuilder;
+
 set_time_limit(0);
 
 require __DIR__.'/../vendor/autoload.php';
 
-$app = new ArchFizz\PhpAirPlay\Application(new Symfony\Component\Filesystem\Filesystem());
-$app->add(new ArchFizz\PhpAirPlay\MirrorCommand());
-$app->add(new ArchFizz\PhpAirPlay\PlayVideoCommand());
+$app = new Application(new Filesystem());
+
+$mirrorCommand = new MirrorCommand(MirrorCommand::NAME, new Mirror(new ProcessBuilder()));
+$playVideoCommand = new PlayVideoCommand();
+
+$app->add($mirrorCommand);
+$app->add($playVideoCommand);
 $app->run();

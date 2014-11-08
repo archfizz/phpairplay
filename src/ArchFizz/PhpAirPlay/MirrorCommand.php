@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\ProcessBuilder;
 
@@ -17,7 +18,10 @@ use Symfony\Component\Process\ProcessBuilder;
 class MirrorCommand extends Command
 {
     const NAME = 'mirror';
+
     const HOST_ARGUMENT = 'host';
+
+    const UTILITY_OPTION = 'utility';
 
     const AIRPLAY_DEFAULT_PORT = 7000;
 
@@ -26,15 +30,40 @@ class MirrorCommand extends Command
     const TRANSISTION_SLIDE_RIGHT = 'SlideRight';
     const TRANSISTION_DISSOLVE = 'Dissolve';
 
+    /**
+     * @var Mirror
+     */
+    private $mirror;
+
+    /**
+     * @param null|string $name
+     * @param Mirror      $mirror
+     */
+    public function __construct($name, Mirror $mirror)
+    {
+        $this->mirror = $mirror;
+
+        parent::__construct($name);
+    }
+
     protected function configure()
     {
         $this
             ->setName(self::NAME)
             ->setDescription('Stream a sequence of desktop screenshots to an Apple TV device.')
             ->addArgument(
-                'host',
+                self::HOST_ARGUMENT,
                 InputArgument::REQUIRED,
                 'The IP address of the Apple TV'
+            )
+            ->addOption(
+                self::UTILITY_OPTION,
+                'u',
+                InputOption::VALUE_REQUIRED,
+                sprintf(
+                    'The utility for capturing the desktop as an image. One of [%s]',
+                    implode('|', $this->mirror->getSupportedUtilities())
+                )
             )
         ;
     }
@@ -56,14 +85,16 @@ class MirrorCommand extends Command
             'base_url' => $baseUrl
         ]);
 
-        $mirror = new Mirror(new ProcessBuilder(), 'imagemagick');
+        if ($input->hasOption(self::UTILITY_OPTION)) {
+            $this->mirror->setUtility($input->getOption(self::UTILITY_OPTION));
+        }
 
         while (true) {
-            $mirror->reflect();
+            $this->mirror->reflect();
 
-            $this->putPhoto($output, $client, file_get_contents($mirror->getImage()));
+            $this->putPhoto($output, $client, file_get_contents($this->mirror->getImage()));
 
-            $this->getApplication()->getFilesystem()->remove($mirror->getImage());
+            $this->getApplication()->getFilesystem()->remove($this->mirror->getImage());
         }
     }
 
