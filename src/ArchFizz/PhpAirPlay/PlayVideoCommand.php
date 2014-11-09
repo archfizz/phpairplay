@@ -17,9 +17,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PlayVideoCommand extends Command
 {
     const NAME = 'play:video';
-    const HOST_ARGUMENT = 'host';
 
-    const AIRPLAY_DEFAULT_PORT = 7000;
+    const HOST_ARGUMENT = 'host';
 
     protected function configure()
     {
@@ -42,7 +41,7 @@ class PlayVideoCommand extends Command
     {
         $host = $input->getArgument(self::HOST_ARGUMENT);
 
-        $baseUrl = sprintf('http://%s:%d', $host, self::AIRPLAY_DEFAULT_PORT);
+        $baseUrl = sprintf('http://%s:%d', $host, AppleTvClient::AIRPLAY_DEFAULT_PORT);
 
         $output->writeln(sprintf("Connecting to %s", $baseUrl));
         $output->writeln('Press Ctrl-c to quit');

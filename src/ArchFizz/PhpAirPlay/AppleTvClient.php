@@ -7,4 +7,5 @@ namespace ArchFizz\PhpAirPlay;
  */
 interface AppleTvClient
 {
+    const AIRPLAY_DEFAULT_PORT = 7000;
 }

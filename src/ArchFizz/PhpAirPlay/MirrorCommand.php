@@ -23,8 +23,6 @@ class MirrorCommand extends Command
 
     const UTILITY_OPTION = 'utility';
 
-    const AIRPLAY_DEFAULT_PORT = 7000;
-
     /**
      * @var Mirror
      */
@@ -71,7 +69,7 @@ class MirrorCommand extends Command
     {
         $host = $input->getArgument(self::HOST_ARGUMENT);
 
-        $baseUrl = sprintf('http://%s:%d', $host, self::AIRPLAY_DEFAULT_PORT);
+        $baseUrl = sprintf('http://%s:%d', $host, AppleTvClient::AIRPLAY_DEFAULT_PORT);
 
         $output->writeln(sprintf("Connecting to %s", $baseUrl));
         $output->writeln('Press Ctrl-c to quit');
