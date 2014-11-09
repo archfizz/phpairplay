@@ -21,11 +21,6 @@ class PlayVideoCommand extends Command
 
     const AIRPLAY_DEFAULT_PORT = 7000;
 
-    const TRANSISTION_NONE = 'None';
-    const TRANSISTION_SLIDE_LEFT = 'SlideLeft';
-    const TRANSISTION_SLIDE_RIGHT = 'SlideRight';
-    const TRANSISTION_DISSOLVE = 'Dissolve';
-
     protected function configure()
     {
         $this
